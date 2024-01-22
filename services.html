@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <link rel="stylesheet" href="styleservices.css">
+    <script src="https://kit.fontawesome.com/cd2f07b31c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="left">Aryan's Portfolio</div>
+            <div class="right">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact Me</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div id="services">
+        <div class="container">
+            <h1 class="sub-title">My Services</h1>
+            <div class="services-list">
+                <div>
+                    <i class="fa-solid fa-scroll"></i><br><br>
+                    <h2>Web Design</h2>
+                    <button class="btn btn-sm" onclick="addToCart('Web Design', 50.00)">Buy me</button>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, </p>
+                    <a href="#">learn more</a>
+                </div><br>
+                <div>
+
+                    <i class="fa-solid fa-puzzle-piece"></i><br><br>
+                    <h2>UI/UX Design</h2>
+                    <button class="btn btn-sm" onclick="addToCart('UI/UX Design', 60.00)">Buy me</button>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, </p>
+                    <a href="#">learn more</a>
+                </div><br>
+                <div>
+                    <i class="fa-solid fa-wand-sparkles"></i><br><br>
+                    <h2>App Design</h2>
+                    <button class="btn btn-sm" onclick="addToCart('App Design', 70.00)">Buy me</button>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, </p>
+                    <a href="#">learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+<div class="cart">
+    <h2>Shopping cart</h2>
+    <ul id="cartItems"></ul>
+    <p>Total: $<span id="cartTotal">0.00</span></p>
+    <br>
+    <a href="www,google.com" class="Checkout">Checkout</a>
+</div>
+
+
+    <script>
+        const cart = [];
+
+        function addToCart(productName, price) {
+            function findProduct(item) {
+                return item.productName === productName;
+            }
+
+            const product = cart.find(findProduct);
+
+            if (product) {
+                product.quantity++;
+            } else {
+                cart.push({ productName, price, quantity: 1 });
+            }
+
+            updateCart();
+        }
+
+        function removeFromCart(productName) {
+            const index = cart.findIndex(item => item.productName === productName);
+
+            if (index !== -1) {
+                if (cart[index].quantity > 1) {
+                    cart[index].quantity--;
+                } else {
+                    cart.splice(index, 1);
+                }
+                updateCart();
+            }
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById("cartItems");
+            cartItems.innerHTML = "";
+
+            let total = 0;
+
+            cart.forEach(item => {
+                const cartItem = document.createElement("li");
+                const removeButton = document.createElement("button");
+                removeButton.textContent = "Remove";
+                removeButton.className = "remove";
+                removeButton.onclick = () => removeFromCart(item.productName);
+
+                cartItem.textContent = `${item.productName} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`;
+
+                cartItem.appendChild(removeButton);
+                cartItems.appendChild(cartItem);
+                total += item.price * item.quantity;
+            });
+
+            const cartTotal = document.getElementById("cartTotal");
+            cartTotal.textContent = total.toFixed(2);
+        }
+
+        function checkout() {
+            alert("Checkout is not implemented in this example.");
+        } 
+
+    </script>
+</body>
+</html>

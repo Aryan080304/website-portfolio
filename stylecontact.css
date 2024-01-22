@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+body{
+    background: rgb(0, 0, 33);
+    color: #fff;
+}
+h1{
+    font-family: 'Poppins', sans-serif;
+    margin: 40px 100px;
+
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: 80px;
+    background-color: rgb(18, 18, 62);
+}
+
+
+nav ul {
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+
+    list-style: none;
+    margin: 0 23px;
+
+}
+nav ul li a{
+    text-decoration: none;
+    list-style: none;
+    color: white;
+
+}
+
+nav ul li a:hover{
+color: aqua;
+}
+.contact-left{
+    flex-basis: 35%;
+}
+.contact-right{
+    flex-basis: 60%;
+}
+.contact-left p{
+    margin-top: 30px;
+}
+.contact-left p i{
+    color: #fff;
+    margin-right: 15px;
+    font-size: 25px;
+}
+.social-icons{
+    margin-top: 30px;
+}
+.social-icons a{
+ text-decoration: none;
+font-size: 30px;
+margin-right: 15px;
+color: aquamarine;
+display: inline-block;
+transition: transform 0.5s;
+}
+.social-icons a:hover{
+    color: azure;
+    transform: translate(-5px);
+}
+.contact-right form{
+    width: 100%;
+    padding-left: 350px;
+    margin-top: -150px;
+
+}
+form input, form textarea{
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: #70f4eb;
+    padding: 20px;
+    margin: 15px 0;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 6px;
+
+}
